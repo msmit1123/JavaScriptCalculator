@@ -11,10 +11,10 @@ import { PropTypes } from 'prop-types';
 import './Button.scss'
 
 function Button(props){
-    var handleClick = () => {props.onClick()}
+    var handleClick = (event) => props.onClick(event);
 
     return (
-        <div className={props.classes} id={props.id} onClick={handleClick}>
+        <div className={props.classes} id={props.id} onClick={handleClick} value={props.value}>
             {props.children}
         </div>
     )

@@ -15,8 +15,9 @@ function Display(props){
     
     return (
         <div id="screen-container">
-            <div className="past-text">last entry here</div>
-            <input value={props.content} onChange={handleChange} />
+            <div className="text last-entry">&nbsp;{props.lastEntryText}</div>
+            <div className="text last-answer">&nbsp;{props.lastAnswer}</div>
+            <div className="text working">{props.content}</div>
         </div>
     )
 }
