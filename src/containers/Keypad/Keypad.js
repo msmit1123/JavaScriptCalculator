@@ -27,11 +27,11 @@ function Keypad(props){
                 <Button classes="button" value="(" onClick={props.handleButtons}>(</Button>
                 <Button classes="button" value=")" onClick={props.handleButtons}>)</Button>
                 <Button classes="button" value="/" onClick={props.handleButtons}><FontAwesomeIcon icon={faDivide} /></Button>
-                <Button classes="button" value="&times;" onClick={props.handleButtons}>&times;</Button>
+                <Button classes="button" value="*" onClick={props.handleButtons}>&times;</Button>
                 <Button classes="button digit" value="7" onClick={props.handleButtons}>7</Button>
                 <Button classes="button digit" value="8" onClick={props.handleButtons}>8</Button>
                 <Button classes="button digit" value="9" onClick={props.handleButtons}>9</Button>
-                <Button classes="button" value="&minus;" onClick={props.handleButtons}>&minus;</Button>
+                <Button classes="button" value="-" onClick={props.handleButtons}>&minus;</Button>
                 <Button classes="button digit" value="4" onClick={props.handleButtons}>4</Button>
                 <Button classes="button digit" value="5" onClick={props.handleButtons}>5</Button>
                 <Button classes="button digit" value="6" onClick={props.handleButtons}>6</Button>
@@ -42,7 +42,7 @@ function Keypad(props){
                 <Button classes="button" id="equals" onClick={props.evaluate}>=</Button>
                 <Button classes="button digit" value="0" onClick={props.handleButtons}>0</Button>
                 <Button classes="button digit" value="." onClick={props.handleButtons}>.</Button>
-                <Button classes="button digit" value="-" onClick={props.handleButtons}>(-)</Button>
+                <Button classes="button digit" value="&#8315;" onClick={props.handleButtons}>(&#8315;)</Button>
             </div>
         </div>
     )

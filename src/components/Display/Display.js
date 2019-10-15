@@ -11,8 +11,6 @@ import { PropTypes } from 'prop-types';
 import './Display.scss'
 
 function Display(props){
-    var handleChange = () => {props.onChange()}
-    
     return (
         <div id="screen-container">
             <div className="text last-entry">&nbsp;{props.lastEntryText}</div>

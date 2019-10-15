@@ -11,15 +11,13 @@ import Keypad from '../Keypad/Keypad.js';
  */
 //CSS
 import './Calculator.scss'
-import { tsImportEqualsDeclaration } from '@babel/types';
 
 class Calculator extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            curEntry: "",
+            curEntry: "0",
             lastEntry: "",
-            lastEntryText: "Welcome",
             lastAnswer: "",
         };
         
@@ -31,14 +29,15 @@ class Calculator extends React.Component{
     }
 
     clear(){
-        if(this.state.curEntry != ""){
-            this.setState({curEntry: ""});
-        }else{this.setState({curEntry: "", lastAnswer: "", lastEntryText: ""})}
+        this.setState({
+            curEntry: "0",
+            lastAnswer: "",
+            lastEntry: ""
+        })
     };
     
     evaluate(){
         this.setState({
-            lastEntryText: this.state.curEntry,
             lastEntry: this.state.curEntry,
             lastAnswer: eval(this.state.curEntry),
             curEntry: ""
@@ -46,14 +45,15 @@ class Calculator extends React.Component{
     };
 
     handleButtons(event){
-        let value = event.target.getAttribute("value");
+        let value = event.target.getAttribute("value"); //check which button was pressed
+        value = this.validatePressedButton(value); //validate what to do with that button
         this.setState((prevState) => {
             return {curEntry: prevState.curEntry.toString().concat(value)}
         })
     };
 
     backspace(){
-        if(this.state.curEntry.substr(this.state.curEntry.length-3) == "ans"){
+        if(this.state.curEntry.substr(this.state.curEntry.length-3) === "ans"){
             this.setState((prevState) => {
                 return { curEntry: prevState.curEntry.slice(0, -3) }
             })
@@ -66,7 +66,52 @@ class Calculator extends React.Component{
 
     lastEntry(){
         this.clear();
-        this.setState({curEntry: this.state.lastEntryText})
+        this.setState({curEntry: this.state.lastEntry})
+    }
+
+    validatePressedButton(value){
+        var curEntry = this.state.curEntry;
+        var lastChar = curEntry.substr(curEntry.length-1);
+        var operators = /[+*/-]/;
+        var numbers = /[0-9]/;
+        var decimal = /[.]/;
+        var lastNumberHasDecimal = /([0-9]*\.[0-9]*)$/;
+
+        //if ans is clicked, do nothing unless an operator was waiting
+        if(value === "ans"){
+            if(lastChar.match(operators)){
+                return value;
+            }else{
+                return "";
+            }
+        }
+
+        //if current entry is 0 and a number is typed, override it.
+        if(curEntry === "0" && value.match(numbers)){
+            this.backspace();
+            return value;
+        }
+
+        //if current entry is blank and an operator is typed, insert "ans"
+        if(curEntry === "" && value.match(operators)){
+            this.setState({curEntry: "ans"});
+            return value;
+        }
+
+        //if last number in string already has a decimal, don't allow another
+        if(curEntry.match(lastNumberHasDecimal) && value.match(decimal)){
+            return ""
+        }
+
+        //only output the last consecutively typed operator
+        if(lastChar.match(operators) && value.match(operators)){
+            this.backspace();
+            return value;
+        }
+        
+        
+        
+        return value;
     }
     
 
@@ -74,7 +119,7 @@ class Calculator extends React.Component{
         return (
             <div id="calculator-container">
                 <Display 
-                    lastEntryText={this.state.lastEntryText}
+                    lastEntryText={this.state.lastEntry}
                     lastAnswer={this.state.lastAnswer}
                     content={this.state.curEntry}
                 />
