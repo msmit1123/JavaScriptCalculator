@@ -2,8 +2,7 @@
 * Import CSS Variables
 */
 @import './_variables.scss';
-$screen-height: 100px;
-$mobile-break: 768px;
+
 
 .App {
   position: fixed;
@@ -16,145 +15,11 @@ $mobile-break: 768px;
   background-color 1s;
 }
 
-header{
-  top: 0px;
-  width:100%;
-  padding: 10px;
-  background-color: rgba(50,50,50,1);
-  color:white;
-  & a{
-    color:white;
-  }
-}
-
-h1{
-  font-size:25px;
-  margin:10px;
-}
-
-h5{
-  margin:10px;
-}
-
 #page-content{
   width:100%;
   height: 100%;
   background-color: rgba(200,200,210,1);
   min-height: 350px;
-  
-  #calculator-container{
-    background-color: $blank_color;
-    width:100%;
-    height:100%;
-
-    @media (min-width:$mobile-break){
-      position: relative;
-      height:auto;
-      top:50%;
-      transform: translateY(-50%);
-      margin-left: auto;
-      margin-right: auto;
-      border: 2px solid rgba(90,90,90,1);
-      box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-      max-width: 400px;
-    }
-    
-    #screen-container{
-      box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5) inset;
-      background-color: darkgrey;
-      height: $screen-height;
-      .past-text{
-        padding:10px;
-        color:red;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 20pt;
-        display: block;
-        left:0px;
-        right:0px;
-        text-align: left;
-        font-weight: 100;
-      }
-      input{
-        @extend .past-text;
-        font-weight: bold;
-        width:95%;
-        margin-left: auto;
-        margin-right: right;
-        background-color: rgba(0,0,0,0);
-        position: relative;
-        bottom:0px;
-        border: none;
-        text-align: right;
-        box-shadow: none;
-        &:focus{
-          outline:none;
-        }
-      }
-    }
-
-    #keypad{  
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      grid-gap: 5px;
-      height: calc(100% - #{$screen-height});
-      padding:5px;
-      background-color:rgba(100,100,120,1);
-      
-      .button{
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(50,50,50,1);
-        color:white;
-        border-radius: 6px;
-        box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
-        @media (min-width:$mobile-break){
-          min-height:10vh;
-        }
-        &.digit{
-          background-color: rgba(75,75,75,1);
-        }
-        &.digit:hover{
-          background-color: rgba(85,85,85,1);
-        }
-        &.digit:active{
-          background-color: rgba(100,150,150,1);
-        }
-        &:hover{
-          background-color: rgba(60,60,60,1);
-        }
-        &:active{
-          background-color: rgba(100,150,150,1);
-        }
-
-        &#clear{
-          background-color:rgba(90,50,50,1);
-        }
-        &#clear:hover{
-          background-color:rgba(100,60,60,1);
-        }
-        &#clear:active{
-          background-color: rgba(100,150,150,1);
-        }
-
-        &#equals{
-          background-color:rgba(50,50,70,1);
-          grid-area: 5 / 4 / 7 / 5;
-        }
-        &#equals:hover{
-          background-color:rgba(60,60,80,1);
-        }
-        &#equals:active{
-          background-color: rgba(100,150,150,1);
-        }
-      }
-    
-    
-    }
-  
-  }
 }
 
 

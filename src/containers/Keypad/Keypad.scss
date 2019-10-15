@@ -1,0 +1,18 @@
+/*
+* Import CSS Variables
+*/
+@import '../../_variables.scss';
+
+#keypad{  
+    height: calc(100% - #{$screen-height});
+    padding:0px;
+    background-color:rgba(100,100,120,1);
+    #keys{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-gap: 5px;
+        height: calc(100% - 20px);
+        padding: 10px;
+    }
+}

@@ -1,0 +1,37 @@
+/*
+* Import CSS Variables
+*/
+@import '../../_variables.scss';
+
+#screen-container{
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5) inset;
+    background-color: darkgrey;
+    height: $screen-height;
+    .past-text{
+        padding:10px;
+        color:red;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20pt;
+        display: block;
+        left:0px;
+        right:0px;
+        text-align: left;
+        font-weight: 100;
+    }
+    input{
+        @extend .past-text;
+        font-weight: bold;
+        width:95%;
+        margin-left: auto;
+        margin-right: right;
+        background-color: rgba(0,0,0,0);
+        position: relative;
+        bottom:0px;
+        border: none;
+        text-align: right;
+        box-shadow: none;
+        &:focus{
+            outline:none;
+        }
+    }
+}

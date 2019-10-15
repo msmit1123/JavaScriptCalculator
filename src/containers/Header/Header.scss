@@ -1,0 +1,19 @@
+/*
+* Import CSS Variables
+*/
+@import '../../_variables.scss';
+
+header{
+  top: 0px;
+  width:100%;
+  padding: 10px;
+  background-color: rgba(50,50,50,1);
+  color:white;
+  & a{
+    color:white;
+  }
+  h1{
+    font-size:25px;
+    margin:10px;
+  }
+}
