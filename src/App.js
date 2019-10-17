@@ -15,16 +15,30 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      isViewApp:true,
+      isViewApp:false,
     }
+    this.viewApp = this.viewApp.bind(this);
+    this.viewNotes = this.viewNotes.bind(this);
   }
+
+  viewNotes(){
+    this.setState({ isViewApp:true })
+  }
+  viewApp() {
+    this.setState({ isViewApp: false })
+  }
+
   render(){
     return (
       <div className="App">
-        <Header />
+        <Header view={ {
+          isViewApp: this.state.isViewApp,
+          viewApp: this.viewApp,
+          viewNotes: this.viewNotes
+        } } />
         <div id="page-content" className="app-view">
-          {this.state.isViewApp && <Calculator />}
-          {/*!this.state.isViewApp && <DevelopmentNotes />*/}
+          {!this.state.isViewApp && <Calculator />}
+          {this.state.isViewApp && <div>hihihihihi</div>}
         </div>
 
       </div>
