@@ -22,13 +22,13 @@
     &.digit:hover{
         background-color: rgba(85,85,85,1);
     }
-    &.digit:active{
+    &.digit:active, &.active{
         background-color: rgba(100,150,150,1);
     }
     &:hover{
         background-color: rgba(60,60,60,1);
     }
-    &:active{
+    &:active, &.active{
         background-color: rgba(100,150,150,1);
     }
 
@@ -38,7 +38,7 @@
     &#clear:hover{
         background-color:rgba(100,60,60,1);
     }
-    &#clear:active{
+    &#clear:active, &#clear.active{
         background-color: rgba(100,150,150,1);
     }
 
@@ -49,7 +49,7 @@
     &#equals:hover{
         background-color:rgba(60,60,80,1);
     }
-    &#equals:active{
+    &#equals:active, &#equals.active{
         background-color: rgba(100,150,150,1);
     }
 }

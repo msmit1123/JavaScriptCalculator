@@ -34,6 +34,18 @@ class Calculator extends React.Component{
         this.handleButtons = this.handleButtons.bind(this);
         this.backspace = this.backspace.bind(this);
         this.lastEntry = this.lastEntry.bind(this);
+        this.validatePressedButton = this.validatePressedButton.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
+        this.mapKeyCode = this.mapKeyCode.bind(this);
+    }
+    componentDidMount(){ //add event listener for keyboard presses on mount
+        document.addEventListener('keydown',this.handleKeyDown);
+        document.addEventListener('keyup', this.handleKeyUp);
+    }
+    componentWillUnmount(){ //remove on unmount
+        document.removeEventListener('keydown',this.handleKeyDown);
+        document.removeEventListener('keyup', this.handleKeyUp);
     }
 
     clear(){
@@ -259,7 +271,60 @@ class Calculator extends React.Component{
         
         return value;
     }
+
+    handleKeyDown(e){
+        var keyID = this.mapKeyCode(e.key); //figure out what ID corresponds to the pressed button
+        if(keyID){
+            var keyElement = document.getElementById(keyID);
+            keyElement.click();         //generate a click on that button
+            keyElement.classList.add("active"); //make the button active
+        }
+    }
+
+    handleKeyUp(e){
+        var keyID = this.mapKeyCode(e.key); //figure out what ID corresponds to the pressed button
+        if (keyID) {
+            var keyElement = document.getElementById(keyID);
+            keyElement.classList.remove("active"); //make the button active
+        }
+    }
     
+    mapKeyCode(key){
+        var keyMap = {
+            c: "clear",
+            C: "clear",
+            Escape: "clear",
+            a: "ans",
+            A: "ans",
+            e: "entry",
+            E: "entry",
+            x: "multiply",
+            X: "multiply",
+            Backspace: "delete",
+            Delete: "delete",
+            "(": "open-paren",
+            ")": "close-paren",
+            "/": "divide",
+            "*": "multiply",
+            "-": "subtract",
+            "+": "add",
+            Enter: "equals",
+            "=": "equals",
+            ".": "decimal",
+            "_": "negative",
+            0: "zero",
+            1: "one",
+            2: "two",
+            3: "three",
+            4: "four",
+            5: "five",
+            6: "six",
+            7: "seven",
+            8: "eight",
+            9: "nine"
+        }
+        return keyMap[key];
+    }
 
     render(){
         return (
