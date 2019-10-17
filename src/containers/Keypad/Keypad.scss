@@ -6,7 +6,7 @@
 #keypad{  
     height: calc(100% - #{$screen-height});
     padding:0px;
-    background-color:rgba(100,100,120,1);
+    background-color:$calculator-color;
     #keys{
         display: grid;
         grid-template-columns: repeat(4, 1fr);

@@ -22,7 +22,6 @@ class App extends React.Component{
     return (
       <div className="App">
         <Header />
-
         <div id="page-content" className="app-view">
           {this.state.isViewApp && <Calculator />}
           {/*!this.state.isViewApp && <DevelopmentNotes />*/}

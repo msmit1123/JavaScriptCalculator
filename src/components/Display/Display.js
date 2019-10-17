@@ -12,10 +12,12 @@ import './Display.scss'
 
 function Display(props){
     return (
-        <div id="screen-container">
-            <div className="text last-entry">&nbsp;{props.lastEntryText}</div>
-            <div className="text last-answer">&nbsp;{props.lastAnswer}</div>
-            <div className="text working">{props.content}</div>
+        <div id="calculator-top">
+            <div id="display-container">
+                <div className="text last-entry">&nbsp;{props.lastEntryText}</div>
+                <div className="text last-answer">&nbsp;{props.lastAnswer}</div>
+                <div id="display" className="text working"><span>{props.content}</span></div>
+            </div>
         </div>
     )
 }
