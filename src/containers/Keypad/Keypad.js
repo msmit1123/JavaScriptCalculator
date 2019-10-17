@@ -42,7 +42,7 @@ function Keypad(props){
                 <Button classes="button" id="equals" onClick={props.evaluate}>=</Button>
                 <Button classes="button digit" value="0" onClick={props.handleButtons}>0</Button>
                 <Button classes="button digit" value="." onClick={props.handleButtons}>.</Button>
-                <Button classes="button digit" value="&#8315;" onClick={props.handleButtons}>(&#8315;)</Button>
+                <Button classes="button digit" value="⁻" onClick={props.handleButtons}>(&#8315;)</Button>
             </div>
         </div>
     )
