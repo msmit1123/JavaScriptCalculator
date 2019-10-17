@@ -29,7 +29,7 @@ class ToggleWithLabels extends React.Component{
                 <ToggleSwitch
                     id={ this.props.id + "-switch" }
                     onChange={ this.toggleSwitch }
-                    checked={this.props.isChecked} 
+                    isChecked={this.props.isChecked} 
                 />
                 <button onClick={this.props.checkedInfo.action}>{this.props.checkedInfo.label}</button>
             </div>
@@ -41,8 +41,8 @@ class ToggleWithLabels extends React.Component{
 /**
  *  Define component PropTypes
 */
-ToggleSwitch.propTypes = {
-    isChecked: PropTypes.bool,
+ToggleWithLabels.propTypes = {
+    isChecked: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     checkedInfo: PropTypes.shape({
         label: PropTypes.string.isRequired,

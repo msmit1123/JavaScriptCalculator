@@ -2,7 +2,6 @@
  * Import Node Modules
  */
 import React from 'react'
-import { PropTypes } from 'prop-types';
 import Display from '../../components/Display/Display.js';
 import Keypad from '../Keypad/Keypad.js';
 
@@ -354,15 +353,6 @@ class Calculator extends React.Component{
             </div>
         )
     }
-}
-
-
-/**
- *  Define component PropTypes
-*/
-Calculator.propTypes = {
-    children: PropTypes.node,
-    onClick: PropTypes.func.isRequired,
 }
 
 

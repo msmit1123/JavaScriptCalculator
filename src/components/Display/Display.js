@@ -31,8 +31,13 @@ function Display(props){
  *  Define component PropTypes
 */
 Display.propTypes = {
+    lastEntryText: PropTypes.string,
+    lastAnswer: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
+    content: PropTypes.string,
     children: PropTypes.node,
-    onChange: PropTypes.func.isRequired,
 }
 
 

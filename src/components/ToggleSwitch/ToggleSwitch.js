@@ -17,7 +17,7 @@ class ToggleSwitch extends React.Component{
     render(){
         return (
             <div className="toggle-switch-container">
-                <input type="checkbox" id={this.props.id} checked={this.props.checked} onChange={this.handleChange} />
+                <input type="checkbox" id={this.props.id} checked={this.props.isChecked} onChange={this.handleChange} />
                 <label className="switch-toggle" htmlFor={this.props.id}></label>
             </div>
         )
@@ -30,7 +30,7 @@ class ToggleSwitch extends React.Component{
 */
 ToggleSwitch.propTypes = {
     id: PropTypes.string.isRequired,
-    checked: PropTypes.bool.isRequired,
+    isChecked: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     children: PropTypes.node,
 }

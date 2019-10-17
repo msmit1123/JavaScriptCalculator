@@ -25,19 +25,14 @@ function Header(props){
             <p>
                 see source on <a href="https://github.com/msmit1123/basic-javascript-calculator">GitHub</a>
             </p>
-            <p>
+            <div>
                 <ToggleWithLabels
                     id="view-toggle"
-                    ischecked={ props.view.isViewApp }
+                    isChecked={ props.view.isViewApp }
                     uncheckedInfo={ {label: "Use calculator", action: props.view.viewApp} }
                     checkedInfo={ {label: "View development notes", action: props.view.viewNotes} }
                 />
-            </p>
-            <p>
-                {/*
-                view: <button onClick={this.displayAsSite}>calculator</button> <ToggleSwitch onChange={this.toggleView} checked={this.state.isFooterChecked} /> <button onClick={this.displayAsFooter}>development notes</button>
-                */}
-            </p>
+            </div>
         </header>
     )
 }
