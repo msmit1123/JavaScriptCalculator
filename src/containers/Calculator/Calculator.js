@@ -45,8 +45,18 @@ class Calculator extends React.Component{
     };
     
     evaluate(){
+        //if there is no string in the display, but there was a last entry, repeat the last entry.
+        var whichStringToCalculate;
+        var isLastEntryChanging = true;
+        if(this.state.curEntry === "" && this.state.lastEntry !== null){
+            whichStringToCalculate = this.state.lastEntry;
+            isLastEntryChanging = false;
+        }else{
+            whichStringToCalculate = this.state.curEntry;
+        }
+
         //convert entire string to array broken up at operators
-        var exprArr = this.state.curEntry.split(splitPoints).filter((item)=>item !== "" );
+        var exprArr = whichStringToCalculate.split(splitPoints).filter((item)=>item !== "" );
         
         /**
         * Prep array for operations
@@ -70,6 +80,7 @@ class Calculator extends React.Component{
          * setup error messages
          */
         var parenError = () => this.setState({ lastAnswer: "Parentheses Not Matched" });
+        // eslint-disable-next-line
         var genericError = () => this.setState({ lastAnswer: "Error!" });
         
         //validate number of open parentheses match close
@@ -79,7 +90,6 @@ class Calculator extends React.Component{
             parenError();
             return null;   
         }
-
 
         /**
          * Begin evaluating the expression
@@ -91,7 +101,11 @@ class Calculator extends React.Component{
 
         //evaluate expression and throw generic error if problem occurs
         try{
-            var answer = evalArr(exprArr);
+            var answer = parseFloat(evalArr(exprArr).toFixed(8)); //rounded to nearest 4 decimals
+            if (isNaN(answer)){
+                answer = "error";
+                genericError()
+            }
         }
         catch(e){
             answer = "error";
@@ -100,7 +114,7 @@ class Calculator extends React.Component{
         
         //update state accordingly
         this.setState({
-            lastEntry: this.state.curEntry,
+            lastEntry: isLastEntryChanging ? this.state.curEntry : this.state.lastEntry,
             lastAnswer: answer,
             curEntry: ""
         });
@@ -126,7 +140,6 @@ class Calculator extends React.Component{
                 }
             }
         }
-
         function evalArr(arr){
             if(arr.length === 1 && typeof arr[0] !== "object"){
                 return arr[0]
@@ -172,7 +185,6 @@ class Calculator extends React.Component{
     }
 
     lastEntry(){
-        this.clear();
         this.setState({curEntry: this.state.lastEntry})
     }
 
@@ -183,6 +195,9 @@ class Calculator extends React.Component{
         //if ans is clicked, do nothing unless an operator was waiting
         if(value === "ans"){
             if(lastChar.match(operators) || lastChar === "("){
+                return value;
+            }else if(curEntry === "" && this.state.lastAnswer !== ""){
+                this.backspace();
                 return value;
             }else{
                 return "";
@@ -232,8 +247,14 @@ class Calculator extends React.Component{
         }
 
         //Don't let more ) be typed than (
-        if(curEntry === ")"){
-            console.log("please wait");
+        if(value === ")"){
+            var openParen = curEntry.match(/(\()/g);
+            openParen === null ? openParen = 0 : openParen = openParen.length;
+            var closeParen = curEntry.match(/(\))/g);
+            closeParen === null ? closeParen = 0 : closeParen = closeParen.length;
+            if (openParen > closeParen){
+                return value;
+            }else{ return ""}
         }
         
         return value;

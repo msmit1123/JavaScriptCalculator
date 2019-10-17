@@ -20,7 +20,7 @@ function Keypad(props){
     return (
         <div id="keypad">
             <div id="keys">
-                <Button classes="button" onClick={props.clear}>C</Button>
+                <Button classes="button" onClick={props.clear}>AC</Button>
                 <Button classes="button" value="ans" onClick={props.handleButtons}>ans</Button>
                 <Button classes="button" onClick={props.lastEntry}>entry</Button>
                 <Button classes="button" onClick={props.backspace}><FontAwesomeIcon icon={faBackspace} /></Button>
