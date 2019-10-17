@@ -69,7 +69,7 @@ class Calculator extends React.Component{
 
         //convert entire string to array broken up at operators
         var exprArr = whichStringToCalculate.split(splitPoints).filter((item)=>item !== "" );
-        
+
         /**
         * Prep array for operations
         */
@@ -92,8 +92,6 @@ class Calculator extends React.Component{
          * setup error messages
          */
         var parenError = () => this.setState({ lastAnswer: "Parentheses Not Matched" });
-        // eslint-disable-next-line
-        var genericError = () => this.setState({ lastAnswer: "Error!" });
         
         //validate number of open parentheses match close
         var openParen = exprArr.filter(a => a === "(").length;
@@ -113,15 +111,15 @@ class Calculator extends React.Component{
 
         //evaluate expression and throw generic error if problem occurs
         try{
-            var answer = parseFloat(evalArr(exprArr).toFixed(8)); //rounded to nearest 4 decimals
+            var answer = parseFloat(evalArr(exprArr));
+            answer = parseFloat(answer.toFixed(8)); //handle floating point rounding
+
             if (isNaN(answer)){
-                answer = "error";
-                genericError()
+                answer = "Error! - Not Valid";
             }
         }
         catch(e){
-            answer = "error";
-            genericError();
+            answer = "Error!";
         }
         
         //update state accordingly
@@ -160,8 +158,8 @@ class Calculator extends React.Component{
             for(let i=0; i < arr.length-1; i++){
                 if (arr[i] === "*") { arr.splice(i - 1, 3, evalExpression(arr[i - 1],arr[i],arr[i+1]));}
                 if (!arr.includes("*") && arr[i] === "/") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
-                if (!arr.includes("*") && !arr.includes("/") && arr[i] === "+") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
-                if (!arr.includes("*") && !arr.includes("/") && !arr.includes("+") && arr[i] === "-") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
+                if (!arr.includes("*") && !arr.includes("/") && arr[i] === "-") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
+                if (!arr.includes("*") && !arr.includes("/") && !arr.includes("-") && arr[i] === "+") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
             }
             //replace a,o,b with result into new array
             return evalArr(arr);
@@ -171,8 +169,8 @@ class Calculator extends React.Component{
             if(typeof b === "object") {evalArr(b)}
             if(o === "*"){return a * b}
             if(o === "/") { return a / b }
-            if(o === "+") { return parseFloat(a) + parseFloat(b) }
-            if(o === "-") { return a - b }
+            if (o === "-") { return parseFloat(a) - parseFloat(b) }
+            if (o === "+") { return parseFloat(a) + parseFloat(b) }
         }
     };
 
@@ -252,10 +250,22 @@ class Calculator extends React.Component{
             return ""
         }
 
+        //for Free Code Camp grading routing, add a rule that if "-" (minus) is typed after an operator to instead insert "⁻" (negative sign)
+        if (value === "-" && lastChar.match(operators)) {
+            return "⁻";
+        }
+
         //only output the last consecutively typed operator
-        if(lastChar.match(operators) && value.match(operators)){
-            this.backspace();
-            return value;
+        if(value.match(operators)){
+            if (lastChar === "⁻"){
+                this.backspace();
+                this.backspace();
+                return value;
+            }
+            if (lastChar.match(operators)){
+                this.backspace();
+                return value;
+            }
         }
 
         //Don't let more ) be typed than (
