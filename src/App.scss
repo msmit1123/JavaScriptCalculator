@@ -16,8 +16,9 @@
 }
 
 #page-content{
+  top: 0px;
   width:100%;
-  background-color: rgba(200,200,210,1);
+  background-color: $background-color;
   &.app-view{
     height: 100%;
     min-height: 350px;

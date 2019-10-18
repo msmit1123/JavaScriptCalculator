@@ -26,6 +26,7 @@
             display: block;
             font-size: 40px;
             line-height: 35px;
+            height:33px;
             font-weight: 100;
             overflow: hidden;
         }
@@ -42,6 +43,7 @@
             right:0px;
             span{
                 float:right;
+                white-space: nowrap;
             }
         }
     }

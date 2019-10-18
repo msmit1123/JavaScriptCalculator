@@ -20,7 +20,7 @@ function Header(props){
         <header>
             <h1>Basic Javascript Calculator</h1>
             <p>
-                I needed a basic calculator, but with a few more functions than a phone app - Specifically - parenthetical grouping. I often want to use parentheses while doing math but I don't always have my TI-83 or TI-36 on me.
+                I needed a basic calculator, but with a few more functions than my phone app has - Specifically - parenthetical grouping. I often want to use parentheses while doing math but I don't always have my TI-83 or TI-36 on me.
             </p>
             <p>
                 see source on <a href="https://github.com/msmit1123/basic-javascript-calculator">GitHub</a>
@@ -28,7 +28,7 @@ function Header(props){
             <div>
                 <ToggleWithLabels
                     id="view-toggle"
-                    isChecked={ props.view.isViewApp }
+                    isChecked={ props.view.isViewNotes }
                     uncheckedInfo={ {label: "Use calculator", action: props.view.viewApp} }
                     checkedInfo={ {label: "View development notes", action: props.view.viewNotes} }
                 />
@@ -44,7 +44,7 @@ function Header(props){
 Header.propTypes = {
     children: PropTypes.node,
     view: PropTypes.shape({
-        isViewApp: PropTypes.bool.isRequired,
+        isViewNotes: PropTypes.bool.isRequired,
         viewApp: PropTypes.func,
         viewNotes: PropTypes.func
     })
