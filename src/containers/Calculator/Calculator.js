@@ -150,7 +150,7 @@ class Calculator extends React.Component{
             }
         }
         function evalArr(arr){
-            if(arr.length === 1 && typeof arr[0] !== "object"){
+            if(arr.length === 1){
                 return arr[0]
             }
 
