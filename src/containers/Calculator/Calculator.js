@@ -10,12 +10,13 @@ import Keypad from '../Keypad/Keypad.js';
  */
 //CSS
 import './Calculator.scss'
+import { type } from 'os';
 
 //set up regexs for use in methods
 var splitPoints = /([)(+*/-]|ans)/;
 var operators = /[+*/-]/;
 var numbers = /[0-9]/;
-var anyNumber = /[-.0-9]+/;
+var anyNumber = /[.0-9]+/;
 var decimal = /[.]/;
 var lastNumberHasDecimal = /([0-9]*\.[0-9]*)$/;
 
@@ -90,7 +91,7 @@ class Calculator extends React.Component{
         /**
          * setup error messages
          */
-        var parenError = () => this.setState({ lastAnswer: "Parentheses Not Matched" });
+        var parenError = () => this.setState({ lastAnswer: "() Error" });
         
         //validate number of open parentheses match close
         var openParen = exprArr.filter(a => a === "(").length;
@@ -151,6 +152,9 @@ class Calculator extends React.Component{
         }
         function evalArr(arr){
             if(arr.length === 1){
+                if(typeof arr[0] === "object"){
+                    return evalArr(arr[0])
+                }
                 return arr[0]
             }
 
@@ -160,16 +164,15 @@ class Calculator extends React.Component{
                 if (!arr.includes("*") && !arr.includes("/") && arr[i] === "-") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
                 if (!arr.includes("*") && !arr.includes("/") && !arr.includes("-") && arr[i] === "+") { arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1])); }
             }
-            //replace a,o,b with result into new array
             return evalArr(arr);
         }
-        function evalExpression(a,o,b){
-            if(typeof a === "object"){evalArr(a)}
-            if(typeof b === "object") {evalArr(b)}
-            if(o === "*"){return a * b}
-            if(o === "/") { return a / b }
-            if (o === "-") { return parseFloat(a) - parseFloat(b) }
-            if (o === "+") { return parseFloat(a) + parseFloat(b) }
+        function evalExpression(firstParam,operator,secondParam){
+            if(typeof firstParam === "object"){evalArr(firstParam)}
+            if(typeof secondParam === "object") {evalArr(secondParam)}
+            if(operator === "*"){return firstParam * secondParam}
+            if(operator === "/") { return firstParam / secondParam }
+            if (operator === "-") { return parseFloat(firstParam) - parseFloat(secondParam) }
+            if (operator === "+") { return parseFloat(firstParam) + parseFloat(secondParam) }
         }
     };
 
