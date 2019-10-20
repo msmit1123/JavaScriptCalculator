@@ -3,53 +3,49 @@
 */
 @import '../../_variables.scss';
 
-.button{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(50,50,50,1);
-    color:white;
-    border-radius: 6px;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
-    transition: all .05s;
-    @media (min-width:$mobile-break){
-        min-height:10vh;
-    }
-    &.digit{
-        background-color: rgba(75,75,75,1);
-    }
-    &.digit:hover{
-        background-color: rgba(85,85,85,1);
-    }
-    &.digit:active, &.active{
-        background-color: rgba(100,150,150,1);
-    }
-    &:hover{
-        background-color: rgba(60,60,60,1);
-    }
-    &:active, &.active{
-        background-color: rgba(100,150,150,1);
-    }
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(50, 50, 50, 1);
+  color: white;
+  border-radius: 6px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.05s;
+  @media (min-width: $mobile-break) {
+    min-height: 10vh;
+  }
 
-    &#clear{
-        background-color:rgba(90,50,50,1);
-    }
-    &#clear:hover{
-        background-color:rgba(100,60,60,1);
-    }
-    &#clear:active, &#clear.active{
-        background-color: rgba(100,150,150,1);
-    }
+  &:hover {
+    background-color: rgba(60, 60, 60, 1);
+  }
 
-    &#equals{
-        background-color:rgba(50,50,70,1);
-        grid-area: 5 / 4 / 7 / 5;
+  &--digit {
+    background-color: rgba(75, 75, 75, 1);
+    &:hover {
+      background-color: rgba(85, 85, 85, 1);
     }
-    &#equals:hover{
-        background-color:rgba(60,60,80,1);
+  }
+
+  &--clear {
+    background-color: rgba(90, 50, 50, 1);
+    &:hover {
+      background-color: rgba(100, 60, 60, 1);
     }
-    &#equals:active, &#equals.active{
-        background-color: rgba(100,150,150,1);
+  }
+
+  &--equals {
+    background-color: rgba(50, 50, 70, 1);
+    grid-area: 5 / 4 / 7 / 5;
+    &:hover {
+      background-color: rgba(60, 60, 80, 1);
     }
+  }
+
+  //active last to supercede
+  &--active,
+  &:active {
+    background-color: rgba(100, 150, 150, 1);
+  }
 }

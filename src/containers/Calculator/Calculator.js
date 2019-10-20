@@ -323,7 +323,7 @@ class Calculator extends React.Component {
     if (keyID) {
       const keyElement = document.getElementById(keyID);
       keyElement.click(); //generate a click on that button
-      keyElement.classList.add('active'); //make the button active
+      keyElement.classList.add('button--active'); //make the button active
     }
   }
 
@@ -331,7 +331,7 @@ class Calculator extends React.Component {
     const keyID = this.mapKeyCode(e.key); //figure out what ID corresponds to the pressed button
     if (keyID) {
       const keyElement = document.getElementById(keyID);
-      keyElement.classList.remove('active'); //make the button active
+      keyElement.classList.remove('button--active'); //make the button active
     }
   }
 
