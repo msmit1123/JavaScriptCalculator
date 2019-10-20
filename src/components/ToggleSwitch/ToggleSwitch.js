@@ -1,45 +1,33 @@
-/**
- * Import Node Modules
- */
-import React from 'react'
+import React from 'react';
 import { PropTypes } from 'prop-types';
 
-/**
- * Import other Dependencies
- */
-//CSS
-import './ToggleSwitch.scss'
+import './ToggleSwitch.scss';
 
-class ToggleSwitch extends React.Component{
+class ToggleSwitch extends React.Component {
+  handleChange = (event) => {
+    this.props.onChange(event);
+  };
 
-    handleChange = (event) => {this.props.onChange(event)}
-
-    render(){
-        return (
-            <div className="toggle-switch-container">
-                <input type="checkbox" id={this.props.id} checked={this.props.isChecked} onChange={this.handleChange} />
-                <label className="switch-toggle" htmlFor={this.props.id}></label>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className='toggle-switch'>
+        <input
+          type='checkbox'
+          id={this.props.id}
+          checked={this.props.isChecked}
+          onChange={this.handleChange}
+        />
+        <label className='toggle-switch__icon' htmlFor={this.props.id}></label>
+      </div>
+    );
+  }
 }
 
-
-/**
- *  Define component PropTypes
-*/
 ToggleSwitch.propTypes = {
-    id: PropTypes.string.isRequired,
-    isChecked: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
-    children: PropTypes.node,
-}
+  id: PropTypes.string.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  children: PropTypes.node
+};
 
-
-/**
- *  Export the component
- */
-export default ToggleSwitch
-
-
-
+export default ToggleSwitch;
