@@ -1,54 +1,52 @@
-/*
-* Import CSS Variables
-*/
 @import '../../_variables.scss';
 
-/**
-* Import font
-*/
 @import url(https://fonts.googleapis.com/css?family=VT323&display=swap);
 
-#calculator-top{
-    padding:10px;
-    background-color: $calculator-color;
-    #display-container{
-        box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5) inset;
-        background-color: darkgrey;
-        height: calc(#{$screen-height} - 20px);
-        outline: darken($calculator-color, 5) solid 2px;
-        position:relative;
-        padding: 0px 20px;
-        .text{
-            padding:5px 0px;
-            width: 100%;
-            color:rgb(63, 65, 73);
-            font-family: 'VT323', monospace;
-            display: block;
-            font-size: 40px;
-            line-height: 35px;
-            height:33px;
-            font-weight: 100;
-            overflow: hidden;
-        }
-        .last-entry{
-            text-align: left;
-        }
-        .last-answer{
-            font-weight: bold;
-            text-align: right;
-        }
-        .working{
-            text-align: right;
-            bottom: 0px;
-            right:0px;
-            span{
-                float:right;
-                white-space: nowrap;
-            }
-        }
+.display {
+  box-sizing: border-box;
+  border: 10px solid $calculator-color;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5) inset;
+  background-color: darkgrey;
+  height: calc(#{$screen-height} - 20px);
+  outline: darken($calculator-color, 5) solid 2px;
+  position: relative;
+  padding: 0px 20px;
+
+  &__text-line {
+    padding: 5px 0px;
+    width: 100%;
+    color: rgb(63, 65, 73);
+    font-family: 'VT323', monospace;
+    display: block;
+    font-size: 40px;
+    line-height: 35px;
+    height: 33px;
+    font-weight: 100;
+    overflow: hidden;
+
+    &--last-entry {
+      text-align: left;
     }
+
+    &--last-answer {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    &--working-entry {
+      text-align: right;
+      bottom: 0px;
+      right: 0px;
+
+      span {
+        float: right;
+        white-space: nowrap;
+      }
+    }
+  }
 }
+
 //hide mock display for FreeCodeCamp's grading script
-#display{
-    display:none;
+#display {
+  display: none;
 }
