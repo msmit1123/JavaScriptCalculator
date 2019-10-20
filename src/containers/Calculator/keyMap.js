@@ -18,7 +18,7 @@ const keyMap = {
   '+': 'add',
   Enter: 'equals',
   '=': 'equals',
-  '.': 'regexes.',
+  '.': 'decimal',
   _: 'negative',
   0: 'zero',
   1: 'one',
