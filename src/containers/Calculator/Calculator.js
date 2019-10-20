@@ -164,9 +164,11 @@ class Calculator extends React.Component {
         }
         if (!arr.includes('*') && arr[i] === '/') {
           arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1]));
+          i -= 1;
         }
         if (!arr.includes('*') && !arr.includes('/') && arr[i] === '-') {
           arr.splice(i - 1, 3, evalExpression(arr[i - 1], arr[i], arr[i + 1]));
+          i -= 1;
         }
         if (
           !arr.includes('*') &&
@@ -190,6 +192,9 @@ class Calculator extends React.Component {
         return firstParam * secondParam;
       }
       if (operator === '/') {
+        if (secondParam === 0 || secondParam === '0') {
+          return 'error';
+        }
         return firstParam / secondParam;
       }
       if (operator === '-') {
@@ -228,6 +233,10 @@ class Calculator extends React.Component {
   validatePressedButton(value) {
     const curEntry = this.state.curEntry;
     const lastChar = curEntry.substr(curEntry.length - 1);
+
+    if (value === null) {
+      return '';
+    }
 
     //if ans is clicked, do nothing unless an operator was waiting
     if (value === 'ans') {
@@ -285,8 +294,13 @@ class Calculator extends React.Component {
     }
 
     //for Free Code Camp grading routing, add a rule that if "-" (minus) is typed after an operator to instead insert "⁻" (negative sign)
-    if (value === '-' && lastChar.match(regexes.operators)) {
-      return '⁻';
+    if (value === '-') {
+      if (lastChar.match(regexes.operators)) {
+        return '⁻';
+      }
+      if (lastChar === '(') {
+        return '';
+      }
     }
 
     //only output the last consecutively typed operator
