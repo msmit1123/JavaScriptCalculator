@@ -341,7 +341,7 @@ class Calculator extends React.Component {
 
   render() {
     return (
-      <div id='calculator-container'>
+      <div id='calculator'>
         <Display
           lastEntryText={this.state.lastEntry}
           lastAnswer={this.state.lastAnswer}

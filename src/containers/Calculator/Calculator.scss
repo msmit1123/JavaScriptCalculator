@@ -3,20 +3,20 @@
 */
 @import '../../_variables.scss';
 
-#calculator-container{
-    background-color: $blank_color;
-    width:100%;
-    height:100%;
+#calculator {
+  background-color: $blank_color;
+  width: 100%;
+  height: 100%;
 
-    @media (min-width:$mobile-break){
-        position: relative;
-        height:auto;
-        top:50%;
-        transform: translateY(-50%);
-        margin-left: auto;
-        margin-right: auto;
-        border: 2px solid rgba(90,90,90,1);
-        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-        max-width: 400px;
-    }  
+  @media (min-width: $mobile-break) {
+    position: relative;
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid rgba(90, 90, 90, 1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+  }
 }
