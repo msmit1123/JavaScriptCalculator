@@ -3,31 +3,20 @@ import { PropTypes } from 'prop-types';
 
 import './ToggleSwitch.scss';
 
-class ToggleSwitch extends React.Component {
-  handleChange = (event) => {
-    this.props.onChange(event);
-  };
-
-  render() {
-    return (
-      <div className='toggle-switch'>
-        <input
-          type='checkbox'
-          id={this.props.id}
-          checked={this.props.isChecked}
-          onChange={this.handleChange}
-        />
-        <label className='toggle-switch__icon' htmlFor={this.props.id}></label>
-      </div>
-    );
-  }
+function ToggleSwitch({ id, className, ...props }) {
+  return (
+    <div className={className}>
+      <input type='checkbox' id={id} {...props} />
+      <label className={`${className}__graphic`} htmlFor={id}></label>
+    </div>
+  );
 }
 
 ToggleSwitch.propTypes = {
   id: PropTypes.string.isRequired,
-  isChecked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  children: PropTypes.node
+  className: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default ToggleSwitch;
