@@ -15,10 +15,6 @@ function Display(props) {
       <div className='display__text-line display__text-line--working-entry'>
         <span>{props.content}</span>
       </div>
-      {/* Create mock display for FreeCodeCamp's grading Script */}
-      <div id='display'>
-        {props.content === '' ? props.lastAnswer : props.content}
-      </div>
     </div>
   );
 }
