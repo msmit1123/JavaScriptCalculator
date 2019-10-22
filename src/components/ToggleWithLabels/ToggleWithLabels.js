@@ -1,60 +1,56 @@
-/**
- * Import Node Modules
- */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-/**
- * Import other Dependencies
- */
-//CSS
 import './ToggleWithLabels.scss';
 
-/**
- * Import Components
- */
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch.js';
 
-class ToggleWithLabels extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggleSwitch = this.toggleSwitch.bind(this);
-  }
-  toggleSwitch = (event) => {
+function ToggleWithLabels({
+  isChecked,
+  id,
+  toggleSwitchType,
+  uncheckedInfo,
+  checkedInfo,
+  ...props
+}) {
+  const toggleSwitch = (event) => {
     if (!event.target.checked) {
-      this.props.uncheckedInfo.action();
+      uncheckedInfo.action();
     }
     if (event.target.checked) {
-      this.props.checkedInfo.action();
+      checkedInfo.action();
     }
   };
 
-  render() {
-    return (
-      <div className='toggle-with-labels' id={this.props.id}>
-        <button onClick={this.props.uncheckedInfo.action}>
-          {this.props.uncheckedInfo.label}
-        </button>
-        <ToggleSwitch
-          className='toggle-switch-1'
-          id={this.props.id + '-switch'}
-          onChange={this.toggleSwitch}
-          checked={this.props.isChecked}
-        />
-        <button onClick={this.props.checkedInfo.action}>
-          {this.props.checkedInfo.label}
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className='toggle-with-labels' id={id}>
+      <button
+        className='toggle-with-labels__label'
+        onClick={uncheckedInfo.action}
+      >
+        {uncheckedInfo.label}
+      </button>
+      <ToggleSwitch
+        className={toggleSwitchType}
+        id={id + '-switch'}
+        onChange={toggleSwitch}
+        checked={isChecked}
+        {...props}
+      />
+      <button
+        className='toggle-with-labels__label'
+        onClick={checkedInfo.action}
+      >
+        {checkedInfo.label}
+      </button>
+    </div>
+  );
 }
 
-/**
- *  Define component PropTypes
- */
 ToggleWithLabels.propTypes = {
   isChecked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
+  toggleSwitchType: PropTypes.string.isRequired,
   checkedInfo: PropTypes.shape({
     label: PropTypes.string.isRequired,
     action: PropTypes.func.isRequired
@@ -66,7 +62,4 @@ ToggleWithLabels.propTypes = {
   children: PropTypes.node
 };
 
-/**
- *  Export the component
- */
 export default ToggleWithLabels;

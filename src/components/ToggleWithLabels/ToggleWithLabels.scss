@@ -1,35 +1,20 @@
-/*
-* Import CSS Variables
-*/
+.toggle-with-labels {
+  & input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
 
-.toggle-with-labels{
+  &__label {
     display: inline-block;
-    --switchSize:1em;
-    --switchWidthFactor:2;
-    --switchEdgeThickness:0.1em;
-    transform: translateY(0.3em);
-    & input{
-        position:absolute;
-        z-index: -1;
-        opacity:0;
-    }
-
-
-
-
-
-    & button {
-      display: inline-block;
-      border: none;
-      margin: 0;
-      text-decoration: none;
-      color: #ffffff;
-      background-color:rgba(0,0,0,0);
-      font-size: 1rem;
-      cursor: pointer;
-      text-align: center;
-      transition: all 250ms ease-in-out;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+    border: none;
+    margin: 0;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 250ms ease-in-out;
   }
 }
