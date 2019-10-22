@@ -1,6 +1,6 @@
 {
   "name": "basic-javascript-calculator",
-  "homepage": "http://mikiesmit.com/tools/calculator/",
+  "homepage": "http://mikiesmit.com/tools/calculator/dev-notes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
