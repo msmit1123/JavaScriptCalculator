@@ -1,31 +1,28 @@
-/*
-* Import CSS Variables
-*/
 @import '../../_variables.scss';
 
-#development-notes{
-  padding-top:30px;
-  h2{
+#development-notes {
+  padding-top: 30px;
+  h2 {
     font-size: 21px;
   }
-  p{
-    padding:10px;
+  p {
+    padding: 10px;
     font-size: 14px;
   }
-  img{
-    width:100%;
+  img {
+    width: 100%;
     border: 5px solid $background-color;
   }
 
-  @media (min-width:$mobile-break){
-    padding:30px;
-    p{
+  @media (min-width: $mobile-break) {
+    padding: 30px;
+    p {
       max-width: 600px;
-      margin:auto;
+      margin: auto;
     }
-    img{
+    img {
       max-width: 500px;
-      margin:auto;
+      margin: auto;
     }
   }
 }
