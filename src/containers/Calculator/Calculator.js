@@ -56,8 +56,8 @@ class Calculator extends React.Component {
       whichStringToCalculate = this.state.curEntry;
     }
 
-    //convert entire string to array broken up at regexes.operators
-    var exprArr = whichStringToCalculate
+    //convert entire string to array broken up at regex splitpoints
+    let exprArr = whichStringToCalculate
       .split(regexes.splitPoints)
       .filter((item) => item !== '');
 
@@ -80,7 +80,7 @@ class Calculator extends React.Component {
     }
 
     // setup error messages
-    var parenError = () => this.setState({ lastAnswer: 'Error: ()' });
+    const parenError = () => this.setState({ lastAnswer: 'Error: "("' });
 
     //validate number of open parentheses match close
     const openParen = exprArr.filter((a) => a === '(').length;
@@ -140,7 +140,7 @@ class Calculator extends React.Component {
               } //iterate through the array between the two marked values, and push each value to the new array
 
               //return everything before the open paren, then the array, then everything after
-              var newArr = arr
+              const newArr = arr
                 .slice(0, m)
                 .concat([betweenParen])
                 .concat(arr.slice(n + 1));
@@ -318,9 +318,9 @@ class Calculator extends React.Component {
 
     //Don't let more ) be typed than (
     if (value === ')') {
-      var openParen = curEntry.match(/(\()/g);
+      let openParen = curEntry.match(/(\()/g);
       openParen === null ? (openParen = 0) : (openParen = openParen.length);
-      var closeParen = curEntry.match(/(\))/g);
+      let closeParen = curEntry.match(/(\))/g);
       closeParen === null ? (closeParen = 0) : (closeParen = closeParen.length);
       if (openParen > closeParen) {
         return value;
@@ -373,7 +373,4 @@ class Calculator extends React.Component {
   }
 }
 
-/**
- *  Export the component
- */
 export default Calculator;
