@@ -1,19 +1,9 @@
-/**
- * Import Node Modules
- */
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBackspace, faDivide } from '@fortawesome/free-solid-svg-icons';
 
-/**
- * Import Components
- */
 import Button from '../../components/Button/Button.js';
 
-/**
- * Import other Dependencies
- */
-//CSS
 import './Keypad.scss';
 
 function Keypad(props) {
@@ -197,7 +187,4 @@ function Keypad(props) {
   );
 }
 
-/**
- *  Export the component
- */
 export default Keypad;
