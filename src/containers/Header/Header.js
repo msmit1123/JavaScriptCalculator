@@ -1,18 +1,8 @@
-/**
- * Import Node Modules
- */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-/**
- * Import other Dependencies
- */
-//CSS
 import './Header.scss';
 
-/**
- * Import Components
- */
 import ToggleWithLabels from '../../components/ToggleWithLabels/ToggleWithLabels.js';
 
 function Header(props) {
@@ -26,7 +16,7 @@ function Header(props) {
         on me.
       </p>
       <p>
-        see source on{' '}
+        see source on&nbsp;
         <a href='https://github.com/msmit1123/basic-javascript-calculator'>
           GitHub
         </a>
@@ -45,9 +35,6 @@ function Header(props) {
   );
 }
 
-/**
- *  Define component PropTypes
- */
 Header.propTypes = {
   children: PropTypes.node,
   view: PropTypes.shape({
@@ -57,7 +44,4 @@ Header.propTypes = {
   })
 };
 
-/**
- *  Export the component
- */
 export default Header;
