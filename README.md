@@ -8,7 +8,7 @@ see a live version here:
 http://www.mikiesmit.com/tools/calculator/
 
 
-##Development Notes + Sketches:
+## Development Notes + Sketches:
 
 ![development notes page 1](./src/assets/images/layout-sketch-page-one-640w.jpg)
 ![development notes page 1](./src/assets/images/layout-sketch-page-two-640w.jpg)
