@@ -6,7 +6,9 @@ import Calculator from './containers/Calculator/Calculator.js';
 function App() {
   return (
     <div className='App'>
-      <Calculator />
+      <div className='page-content'>
+        <Calculator />
+      </div>
     </div>
   );
 }

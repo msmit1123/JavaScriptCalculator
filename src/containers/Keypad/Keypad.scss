@@ -1,7 +1,7 @@
 @import '../../_variables.scss';
 
 #keypad {
-  height: calc(100% - #{$screen-height});
+  height: calc(100% - #{$screen-height} + 20px);
   padding: 0px;
   background-color: $calculator-color;
   #keys {
